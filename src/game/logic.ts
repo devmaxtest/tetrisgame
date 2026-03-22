@@ -86,3 +86,36 @@ export const clearCompletedRows = (grid: Grid): { grid: Grid; rowsCleared: numbe
   }
   return { grid: updatedGrid, rowsCleared };
 };
+
+// Move tetromino horizontally
+export const moveTetromino = (
+  grid: Grid,
+  piece: Tetromino,
+  x: number,
+  y: number,
+  direction: 'left' | 'right'
+): { x: number; y: number } => {
+  const offsetX = direction === 'left' ? -1 : 1;
+  if (!checkCollision(grid, piece, x + offsetX, y)) {
+    x += offsetX;
+  }
+  return { x, y };
+};
+
+// Rotate the tetromino
+export const rotateTetromino = (
+  piece: Tetromino,
+  grid: Grid,
+  x: number,
+  y: number
+): Tetromino => {
+  const rotatedShape = piece.shape[0].map((_, index) =>
+    piece.shape.map(row => row[index]).reverse()
+  );
+
+  if (!checkCollision(grid, { ...piece, shape: rotatedShape }, x, y)) {
+    return { ...piece, shape: rotatedShape };
+  }
+
+  return piece; // If collision detected, no rotation is applied
+};
