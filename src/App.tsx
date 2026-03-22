@@ -1,11 +1,1 @@
-import React from 'react';
-
-export const App: React.FC = () => {
-  return (
-    <div className="app-container">
-      <h1>Welcome to Tetris Max</h1>
-    </div>
-  );
-};
-
-export default App;
+// Fichier App.tsx pour Tetrisgame\nimport React from 'react';\nimport GameBoard from './components/GameBoard';\nimport ScorePanel from './components/ScorePanel';\n\nfunction App() {\n  return (\n    <div className='app-container'>\n      <ScorePanel />\n      <GameBoard />\n    </div>\n  );\n}\n\nexport default App;
