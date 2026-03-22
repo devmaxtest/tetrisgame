@@ -1,16 +1,22 @@
-// Fichier App.tsx pour Tetrisgame
-import React from 'react';
-import GameBoard from './components/GameBoard';
-import ScorePanel from './components/ScorePanel';
+// Fichier App.tsx
+import React from "react";
+import GameBoard from "./components/GameBoard";
+import ScorePanel from "./components/ScorePanel";
+import "./styles/index.css";
 
-function App() {
-  return (
-    <div className='app-container'>
-      <ScorePanel />
-      <h1>Bienvenue sur TetrisGame</h1>
+const App = () => (
+  <div className="tetris-container">
+    <header className="game-header">
+      <h1>Tetris Game</h1>
+    </header>
+    <main className="game-main">
       <GameBoard />
-    </div>
-  );
-}
+      <ScorePanel />
+    </main>
+    <footer className="game-footer">
+      <p>&copy; 2026 TetrisGame, Inc.</p>
+    </footer>
+  </div>
+);
 
 export default App;
