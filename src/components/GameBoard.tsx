@@ -1,28 +1,30 @@
-// Fichier GameBoard.tsx
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './ScorePanel.css';
 
-const GameBoard = () => {
-  const [board, setBoard] = useState<string[][]>(
-    Array.from({ length: 20 }, () => Array(10).fill(""))
-  );
+type CellContent = string | null;
+interface GameBoardProps {
+  width: number;
+  height: number;
+}
+
+const GameBoard: React.FC<GameBoardProps> = ({ width, height }) => {
+  const [grid, setGrid] = useState<CellContent[][]>([]);
 
   useEffect(() => {
-    // Exemple d'animation : ajout de pièces de test
-    const interval = setInterval(() => {
-      const newBoard = [...board];
-      newBoard[0][Math.floor(Math.random() * 10)] = "X"; // Ex : Ajouter "X"
-      setBoard(newBoard);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [board]);
+    // Initialize the grid
+    const newGrid: CellContent[][] = [];
+    for (let i = 0; i < height; i++) {
+      newGrid.push(new Array(width).fill(null));
+    }
+    setGrid(newGrid);
+  }, [width, height]);
 
   return (
-    <div id="tetris-board">
-      {board.map((row, rowIndex) => (
-        <div key={rowIndex} className="tetris-row">
+    <div className="game-board">
+      {grid.map((row, rowIndex) => (
+        <div key={rowIndex} className="grid-row">
           {row.map((cell, colIndex) => (
-            <div key={colIndex} className={`tetris-cell ${cell}`}></div>
+            <div key={colIndex} className={`grid-cell ${cell ? 'filled' : ''}`}></div>
           ))}
         </div>
       ))}
