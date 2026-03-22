@@ -1,0 +1,19 @@
+.score-panel {
+  border: 2px solid #333;
+  padding: 16px;
+  width: 200px;
+  background-color: #f9f9f9;
+}
+
+.score-panel h2 {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
