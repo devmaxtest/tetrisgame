@@ -77,6 +77,28 @@ const GameBoard: React.FC<GameBoardProps> = ({ width, height }) => {
     setGrid(renderGrid());
   }, [currentPiece]);
 
+  const checkCollision = (grid: CellContent[][], piece: { shape: CellContent[][]; position: { x: number; y: number } }) => {
+    const { shape, position } = piece;
+    for (let row = 0; row < shape.length; row++) {
+      for (let col = 0; col < shape[row].length; col++) {
+        if (shape[row][col]) {
+          const gridRow = row + position.y;
+          const gridCol = col + position.x;
+
+          if (
+            gridRow >= height ||
+            gridCol < 0 ||
+            gridCol >= width ||
+            (grid[gridRow] && grid[gridRow][gridCol] !== null)
+          ) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  };
+
   return (
     <div className="game-board">
       {grid.map((row, rowIndex) => (
