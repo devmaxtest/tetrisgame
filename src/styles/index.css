@@ -2,13 +2,37 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #121212;
-  color: #ffffff;
+  background-color: #000000; /* Changed to black for better retro look */
+  color: #00FF00; /* Bright green retro text */
 }
 
 .app-container {
   display: flex;
+  flex-direction: column; /* Layout fixed to vertical alignment */
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.game-board {
+  border: 2px solid #00FF00; /* Retro green border */
+  display: grid;
+  grid-template-columns: repeat(10, 20px);
+  grid-auto-rows: 20px;
+  gap: 2px;
+}
+
+.grid-row {
+  display: flex;
+}
+
+.grid-cell {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border: 1px solid #333333;
+}
+
+.grid-cell.filled {
+  background-color: #00FF00; /* Filled cells indicated in green */
 }
