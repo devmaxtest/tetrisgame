@@ -12,7 +12,7 @@ Cette roadmap liste les fonctionnalités et améliorations prévues pour les pro
 ### 2. Animations et UI 
 - [x] Fluidité des animations des mouvements (gauche/droite, chute).
 - [x] Intégration d'un effet visuel pour le drop instantané.
-- [ ] Transition d'état à l'écran (Début, Pause, Game Over).
+- [x] Transition d'état à l'écran (Début, Pause, Game Over).
 
 ## 🚀 Objectifs à moyen terme :
 
@@ -36,5 +36,8 @@ Cette roadmap liste les fonctionnalités et améliorations prévues pour les pro
 - [ ] Hébergement via Hetzner, avec diagnostic serveur (logs et stabilité).
 
 ---
+
+### Dernière mise à jour :
+22/03/2026 à 03:46.
 
 La roadmap sera mise à jour régulièrement pour refléter l'état du projet et prioriser les développements.
