@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './ScorePanel.css';
 
 interface ScorePanelProps {
@@ -8,21 +8,21 @@ interface ScorePanelProps {
 }
 
 const ScorePanel: React.FC<ScorePanelProps> = ({ score, level, linesCleared }) => {
-  const [animatedScore, setAnimatedScore] = useState(score);
-
-  useEffect(() => {
-    if (score !== animatedScore) {
-      setAnimatedScore(score);
-    }
-  }, [score, animatedScore]);
-
   return (
     <div className="score-panel">
-      <h2 className="score animated">
-        Score: <span className="pulse-effect">{animatedScore}</span>
-      </h2>
-      <h3 className="level">Level: <span className="pop-level">{level}</span></h3>
-      <h3 className="lines">Lines Cleared: <span className="lines-effect">{linesCleared}</span></h3>
+      <h2>Game Info</h2>
+      <div className="info-row">
+        <span>Score:</span>
+        <span>{score}</span>
+      </div>
+      <div className="info-row">
+        <span>Level:</span>
+        <span>{level}</span>
+      </div>
+      <div className="info-row">
+        <span>Lines Cleared:</span>
+        <span>{linesCleared}</span>
+      </div>
     </div>
   );
 };
