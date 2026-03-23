@@ -35,10 +35,14 @@ const GameBoard: React.FC<GameBoardProps> = ({ width, height }) => {
         if (direction === "right") newPosition.x += 1;
         if (direction === "down") newPosition.y += 1;
 
-        return { ...prevPiece, position: newPosition };
+        // Vérifier collision avant de mettre à jour la position
+        if (!checkCollision(grid, { shape: prevPiece.shape, position: newPosition })) {
+          return { ...prevPiece, position: newPosition };
+        }
+        return prevPiece; // Pas de changement si collision
       });
     },
-    []
+    [grid]
   );
 
   useEffect(() => {
