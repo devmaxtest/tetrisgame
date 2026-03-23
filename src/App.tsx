@@ -2,6 +2,7 @@
 import React from "react";
 import GameBoard from "./components/GameBoard";
 import ScorePanel from "./components/ScorePanel";
+import ControlsHint from "./components/ControlsHint";
 import "./styles/index.css";
 
 const App = () => (
@@ -12,6 +13,7 @@ const App = () => (
     <main className="game-main">
       <GameBoard />
       <ScorePanel />
+      <ControlsHint />
     </main>
     <footer className="game-footer">
       <p>&copy; 2026 TetrisGame, Inc.</p>
