@@ -1,34 +1,26 @@
 name: CI/CD Pipeline
-
   on:
     push:
       branches: [main]
     pull_request:
       branches: [main]
-
   jobs:
     build:
       runs-on: ubuntu-latest
-
       steps:
         - name: Checkout code
           uses: actions/checkout@v4
-
         - name: Set up Node.js
           uses: actions/setup-node@v4
           with:
             node-version: '20'
-
         - name: Install dependencies
-          run: npm ci || npm install
-
+          run: npm install
         - name: Type check
           run: npx tsc --noEmit
           continue-on-error: true
-
         - name: Build application
           run: npm run build
-
         - name: Verify build output
           run: |
             if [ -d "dist" ]; then
@@ -38,7 +30,6 @@ name: CI/CD Pipeline
               echo "Build failed - no dist directory"
               exit 1
             fi
-
         - name: Deploy notification
           if: github.ref == 'refs/heads/main' && github.event_name == 'push'
           run: |
